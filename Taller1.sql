@@ -106,9 +106,9 @@ INSERT INTO Almacenes VALUES (0,'Av. Madre de Ciudades 3559 - Santiago del Ester
 -- Se insertan datos en la tabla Cajas
 
 INSERT INTO Cajas VALUES ('SE001', 'Libros', 355.78, 1), ('TC001', 'Vajilla', 2456.66, 3), ('SE002', 'Cartucheras', 1557.00, 1), ('CA001', 'Expedientes 2012', 300.00, 5);
-INSERT INTO Cajas VALUES ('SE001', 'Cartulinas', 152.00, 1), ('SE003', 'Calculadoras', 24310.44, 4), ('TC001', 'Cuadernillos', 210.30, 3), ('CA002', 'Billeteras', 2800.00, 3);
-INSERT INTO Cajas VALUES ('TC002', 'Teclado', 2100.50, 4), ('TC001', 'Memoria RAM', 7698.90, 2), ('CA001', 'Mochila Mod', 3400.00, 2), ('SE003', 'Cargadores 19w', 1800.40, 2);
-INSERT INTO Cajas VALUES ('CA001', 'Anteojos de Sol', 4510.30, 2), ('CA002', 'SSD 240GB', 6290.00, 5);
+INSERT INTO Cajas VALUES ('SE003', 'Cartulinas', 152.00, 1), ('SE004', 'Calculadoras', 24310.44, 4), ('TC001', 'Cuadernillos', 210.30, 3), ('CA002', 'Billeteras', 2800.00, 3);
+INSERT INTO Cajas VALUES ('TC002', 'Teclado', 2100.50, 4), ('TC003', 'Memoria RAM', 7698.90, 2), ('CA002', 'Mochila Mod', 3400.00, 2), ('SE005', 'Cargadores 19w', 1800.40, 2);
+INSERT INTO Cajas VALUES ('ZZ001', 'Anteojos de Sol', 4510.30, 2), ('HA002', 'SSD 240GB', 6290.00, 5);
 
 -- Obtenemos todos los almacenes dento de la tabla
 
@@ -120,4 +120,20 @@ DESCRIBE Clientes;
 
 -- Listamos el codigo, dni y nombre de la tabla cliente por ordenado ascendientemente por el nombre
 
-SELECT cliCodigo cliDNI cliNombre FROM Clientes ORDER BY cliNombre;
+SELECT cliCodigo AS 'Codigo de Cliente', cliDNI AS DNI, cliNombre AS 'Apellido y Nombre' FROM Clientes ORDER BY cliNombre;
+
+-- Listamos los campos de codigo, dni, nombre del cliente de la tabla cliente en orden desendiente por el nombre del cliente
+
+SELECT cliCodigo, cliDNI, cliNombre FROM Clientes ORDER BY cliNombre DESC;
+
+-- Listamos los registros de la tabla Almacenes por fecha de alta en orden descendiente y por lugar descendiente
+
+SELECT * FROM Almacenes ORDER BY almFechaAlta DESC, almLugar DESC;
+
+-- Listamos las proviencias en la que se encuentran los almacenes
+
+SELECT SUBSTRING(almLugar, LOCATE('-', almLugar) + 2) FROM Almacenes;
+
+-- Concatenamos las 
+
+
