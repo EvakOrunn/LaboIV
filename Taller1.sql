@@ -70,7 +70,7 @@ CREATE TABLE Factura (
 -- Creamos la tabla FacturaDetalle
 
 CREATE TABLE FacturaDetalle(
-	facNroVenta VARCHAR NOT NULL,
+	facNroVenta VARCHAR(10) NOT NULL,
 	facDetLinea SMALLINT DEFAULT 0,
 	facDetCantidad INT NOT NULL,
 	facDetDetalle VARCHAR(50),
@@ -105,7 +105,7 @@ INSERT INTO Almacenes VALUES (0,'Av. Madre de Ciudades 3559 - Santiago del Ester
 
 -- Se insertan datos en la tabla Cajas
 
-INSERT INTO Cajas VALUES ('SE001', 'Libros', 355.78, 1), ('TC001', 'Vajilla', 2456.66, 3), ('SE002', 'Cartucheras', 1557.00, 1), ('CA001', 'Expedientes 2012', 300.00, 5);
+INSERT INTO Cajas VALUES ('SS001', 'Libros', 355.78, 1), ('TC009', 'Vajilla', 2456.66, 3), ('SS002', 'Cartucheras', 1557.00, 1), ('CC001', 'Expedientes 2012', 300.00, 5);
 INSERT INTO Cajas VALUES ('SE003', 'Cartulinas', 152.00, 1), ('SE004', 'Calculadoras', 24310.44, 4), ('TC001', 'Cuadernillos', 210.30, 3), ('CA002', 'Billeteras', 2800.00, 3);
 INSERT INTO Cajas VALUES ('TC002', 'Teclado', 2100.50, 4), ('TC003', 'Memoria RAM', 7698.90, 2), ('CA002', 'Mochila Mod', 3400.00, 2), ('SE005', 'Cargadores 19w', 1800.40, 2);
 INSERT INTO Cajas VALUES ('ZZ001', 'Anteojos de Sol', 4510.30, 2), ('HA002', 'SSD 240GB', 6290.00, 5);
@@ -134,6 +134,14 @@ SELECT * FROM Almacenes ORDER BY almFechaAlta DESC, almLugar DESC;
 
 SELECT SUBSTRING(almLugar, LOCATE('-', almLugar) + 2) FROM Almacenes;
 
--- Concatenamos las 
+-- Concatenamos los campos de nombre del cliente y domicilio de la tabla Clientes
 
+SELECT CONCAT(cliNombre, ' ', cliDomicilio) AS Cliente FROM Clientes;
 
+-- Concatenamos los campos de nombre de cliente y provincia de la tabla Clientes
+
+SELECT CONCAT(cliNombre, ' ', cliProvincia) AS Cliente FROM Clientes;
+
+-- Listamos los registros de la table Clientes cuya edad sea mayor a 30 años
+
+SELECT * FROM Clientes WHERE TIMESTAMPDIFF(YEAR, cliFecNac, CURDATE()) > 30;
